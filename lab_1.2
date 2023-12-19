@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <conio.h>
+
+
+int main() {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    unsigned int variant;
+    unsigned int n, count = 1;
+    double delta, x1, x2, func;
+
+    while (1)
+    {
+    printf("Оберіть варіант введення даних 1 або 2: ");
+    scanf("%u", &variant);
+
+    if (variant == 1)
+        {
+        printf("x1:");
+        scanf("%lf", &x1);
+
+        printf("x2:");
+        scanf("%lf", &x2);
+
+        printf("n:");
+        scanf("%u", &n);
+        delta = (x2 - x1) / (n - 1);
+
+        printf("Початкові дані: x1: %lf x2: %lf n: %u\n", x1, x2, n);
+        printf("\t*****************************\n");
+        printf("\t* \t N * \t X * \t F(X) \t\n");
+        printf("\t*****************************\n");
+
+            for (double i = x1;i <= x2;i +=delta)                                //збільшення змінної від x1 до x2 додаванням delta поки число не буде =x2 або ~x2
+                {
+                func = i * 2;
+
+                printf("\t|\t%d|\t%.2lf|\t%.2lf|\t\n", count, i, func);
+                printf("\t*--------*----------*-------*\n");
+
+                count += 1; //номер рядка
+                }
+         break;
+        }
+
+    else if (variant == 2) {
+        printf("X1:");
+        scanf("%lf", &x1);
+
+        printf("X2:");
+        scanf("%lf", &x2);
+
+        printf("Delta:");
+        scanf("%lf", &delta);
+
+        n = (int)((x2 - x1) / delta) + 1;
+
+        printf("Початкові дані: x1: %lf x2: %lf delta: %lf\n", x1, x2, delta);
+        printf("Обчислена кількість точок: %u\n", n);
+        printf("\t*****************************\n");
+        printf("\t* \t N * \t X * \t F(X) \t\n");
+        printf("\t*****************************\n");
+
+        for (double i = x1; i <= x2; i += n) //збільшення змінної від x1 до x2 додаванням n поки число не буде =x2 або ~x2                                  x1-від x2-до n-на скільки
+            {
+            func = i * 2;
+
+            printf("\t|\t%d|\t%.2lf|\t%.2lf|\t\n", count, i, func);
+            printf("\t*--------*----------*-------*\n");
+
+            count += 1;
+            }
+     break;
+    }
+
+    else
+        {
+        printf("Невірний вибір. Введіть 1 або 2.\n");
+        }
+    }
+    return 0;
+}
